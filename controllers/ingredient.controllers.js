@@ -5,14 +5,14 @@ export const getIngredients = async (req, res) => {
     res.send('obteniendo un ingrediente')
 }
 
-export const getIngredient = (req, res) => {
-    console.log(req.body)
-    return res.send('recibido')
-}
+export const postIngredient = async (req, res) => {
+    const {idIngrediente, nombre, details} = req.body
 
-export const postIngredient = (req, res) => {
-    console.log(req.body)
-    return res.send('creando ingrediente')
+    const newIngredient = new Ingredient({idIngrediente, nombre, details}) 
+
+    await newIngredient.save()
+
+    return res.json(newIngredient)
 }
 
 export const putIngredient = (req, res) => {
@@ -21,4 +21,9 @@ export const putIngredient = (req, res) => {
 
 export const deleteIngredient = (req, res) => {
     res.send('borrando ingrediente')
+}
+
+export const getIngredient = (req, res) => {
+    console.log(req.body)
+    return res.send('recibido')
 }

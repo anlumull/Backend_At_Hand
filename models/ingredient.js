@@ -1,12 +1,7 @@
 import mongoose from 'mongoose';
 
 const ingredientSchema = new mongoose.Schema({
-    idIngrediente: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    nombre : {
+        nombre : {
         type: String,
         required: true,
         trim: true
