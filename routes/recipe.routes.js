@@ -11,3 +11,5 @@ router.post('/recipe', postRecipe)
 router.put('/recipe', putRecipe)
 
 router.delete('/recipe', deleteRecipe)
+
+export default router

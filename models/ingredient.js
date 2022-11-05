@@ -22,4 +22,4 @@ const ingredientSchema = new mongoose.Schema({
     },
 })
 
-export default mongoose.model('ingredient', ingredientSchema)
+export default mongoose.model('Ingredient', ingredientSchema)
