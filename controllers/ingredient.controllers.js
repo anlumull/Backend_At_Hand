@@ -1,9 +1,8 @@
-import { request } from 'express'
 import Ingredient from '../models/ingredient.js'
 
 export const getIngredients = async (req, res) => {
-    const Ingredient = await Ingredient.find()
-    res.send('obteniendo un ingrediente')
+    const ingredient = await Ingredient.find()
+    res.send(ingredient)
 }
 
 export const postIngredient = async (req, res) => {
@@ -17,16 +16,19 @@ export const postIngredient = async (req, res) => {
 }
 
 export const putIngredient = async (req, res) => {
-    const ingrediente = await Post.findByIdAndUpdate(req.params.id, req.body) 
+    const ingrediente = await Ingredient.findByIdAndUpdate(req.params.id, req.body, {new : true}) 
     console.log(ingrediente)
     return res.send('recibido')
 }
 
-export const deleteIngredient = (req, res) => {
-    res.send('borrando ingrediente')
+export const deleteIngredient = async (req, res) => {
+    const ingredientRemoved = await Ingredient.findByIdAndDelete(req.params.id)
+    if (!ingredientRemoved) return res.sendStatus(404)
+    return res.sendStatus(204)
 }
 
-export const getIngredient = (req, res) => {
-    console.log(req.body)
-    return res.send('recibido')
+export const getIngredient = async (req, res) => {
+    const ingredient = await Ingredient.findById(req.params.id)
+    if(!ingredient) return res.sendStatus(404)
+    return res.json(ingredient)
 }

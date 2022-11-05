@@ -10,6 +10,6 @@ router.post('/ingredient', postIngredient)
 
 router.put('/ingredient/:id', putIngredient)
 
-router.delete('/ingredient', deleteIngredient)
+router.delete('/ingredient/:id', deleteIngredient)
 
 export default router
