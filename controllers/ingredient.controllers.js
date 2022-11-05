@@ -1,8 +1,9 @@
 import Ingredient from "../models/ingredient.js";
+import {uploadImageIngredients} from '../libs/cloudinary.js'
 
 export const getIngredients = async (req, res) => {
   try {
-    throw new Error("error de prueba");
+    //throw new Error("error de prueba");
     const ingredient = await Ingredient.find();
     res.send(ingredient);
   } catch (error) {
@@ -13,14 +14,23 @@ export const getIngredients = async (req, res) => {
 
 export const postIngredient = async (req, res) => {
   try {
-    const { idIngrediente, nombre, details } = req.body;
+    const { nombre, details} = req.body;
 
-    const newIngredient = new Ingredient({ idIngrediente, nombre, details });
+    let dataImage;
 
+    if(req.files.image){
+        const resultado = await uploadImageIngredients(req.files.image.tempFilePath)
+        dataImage = {
+            url : resultado.secure_url,
+            public_id : resultado.public_id
+        };
+    }
+
+    const newIngredient = new Ingredient({ nombre, details, dataImage});
     await newIngredient.save();
-
     return res.json(newIngredient);
   } catch (error) {
+    console.log(error);
     console.error(error.message);
     return res.status(500).json({ message: error.message });
   }

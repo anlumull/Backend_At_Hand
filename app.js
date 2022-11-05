@@ -8,7 +8,7 @@ const app = express()
 app.use(express.json())
 app.use(fileupload({
     useTempFiles : true,
-    tempFileDir: "./upload"
+    tempFileDir: './upload'
 }))
 //Routes 
 app.use(recipeRoutes)
