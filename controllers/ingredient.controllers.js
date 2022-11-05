@@ -1,3 +1,4 @@
+import { request } from 'express'
 import Ingredient from '../models/ingredient.js'
 
 export const getIngredients = async (req, res) => {
@@ -15,8 +16,10 @@ export const postIngredient = async (req, res) => {
     return res.json(newIngredient)
 }
 
-export const putIngredient = (req, res) => {
-    res.send('acutalizando ingrediente')
+export const putIngredient = async (req, res) => {
+    const ingrediente = await Post.findByIdAndUpdate(req.params.id, req.body) 
+    console.log(ingrediente)
+    return res.send('recibido')
 }
 
 export const deleteIngredient = (req, res) => {

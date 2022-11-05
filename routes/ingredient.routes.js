@@ -8,7 +8,7 @@ router.get('/ingredient', getIngredients)
 
 router.post('/ingredient', postIngredient)
 
-router.put('/ingredient', putIngredient)
+router.put('/ingredient/:id', putIngredient)
 
 router.delete('/ingredient', deleteIngredient)
 
