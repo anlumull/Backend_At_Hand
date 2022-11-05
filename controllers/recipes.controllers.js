@@ -1,3 +1,4 @@
+import { request } from 'express'
 import Recipe from '../models/recipe.js'
 
 export const getRecipes = async (req, res) => {
@@ -5,7 +6,10 @@ export const getRecipes = async (req, res) => {
     res.send(recipe)
 }
 
-export const postRecipe = (req, res) => res.send('Creando una receta')
+export const postRecipe = (req, res) => {
+    console.log(req.body)
+    return res.send('recibido')
+}
 
 export const putRecipe = (req, res) => res.send('actualizando una receta')
 
