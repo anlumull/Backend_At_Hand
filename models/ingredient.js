@@ -11,10 +11,15 @@ const ingredientSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    images : {
+    image: {
+        public_id: String,
         url: String,
-        publicId : String
+      },
     },
-})
+    {
+      timestamps: true,
+      versionKey: false,
+    }
+)
 
 export default mongoose.model('Ingredient', ingredientSchema)

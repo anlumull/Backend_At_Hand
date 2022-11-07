@@ -1,9 +1,10 @@
 import {v2 as cloudinary} from 'cloudinary'
+import {CLOUD_NAME, CLOUD_APISEC, CLOUD_APIKEY} from '../config.js'
 
 cloudinary.config({
-    cloud_name: 'diegocloud221',
-    api_key: '346945789445874',
-    api_secret: 'p7DeaN5Grlir91LM3Z7yJ9FK0VU'
+    cloud_name: CLOUD_NAME,
+    api_key: CLOUD_APIKEY,
+    api_secret: CLOUD_APISEC
 })
 
 export const uploadImageIngredients = async filePath => {
@@ -12,3 +13,6 @@ export const uploadImageIngredients = async filePath => {
     })
 }
 
+export const deleteImage = async id => {
+    return await cloudinary.uploader.destroy(id)
+}
