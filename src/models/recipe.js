@@ -16,8 +16,13 @@ const recipeSchema = new mongoose.Schema({
         publicId : String
     },
     ingredients : {
-        
+        type: mongoose.Types.ObjectId,
+        default: []
     },
-})
+    },
+    {
+        versionKey: false,
+    },
+)
 
 export default mongoose.model('recipes', recipeSchema)
