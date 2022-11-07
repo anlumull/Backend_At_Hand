@@ -13,6 +13,12 @@ export const uploadImageIngredients = async filePath => {
     })
 }
 
+export const uploadImageRecipes = async filePath => {
+    return await cloudinary.uploader.upload(filePath,{
+        folder : 'At_hand/Recipes'
+    })
+}
+
 export const deleteImage = async id => {
     return await cloudinary.uploader.destroy(id)
 }

@@ -1,4 +1,3 @@
-import { request } from 'express'
 import Recipe from '../models/recipe.js'
 
 export const getRecipes = async (req, res) => {
