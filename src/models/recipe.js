@@ -15,10 +15,10 @@ const recipeSchema = new mongoose.Schema({
         url: String,
         publicId : String
     },
-    ingredients : {
-        type: mongoose.Types.ObjectId,
-        default: []
-    },
+    ingredients : [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ingrediet',
+    }]
     },
     {
         versionKey: false,
